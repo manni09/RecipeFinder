@@ -1,0 +1,21 @@
+<h1>Searching for - <%= @search_term %></h1>
+
+
+<% if @recipes.any? %>
+    <table border="1">
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Social Rank</th>
+        </tr>
+        <% @recipes.each do |recipe| %>
+        <tr>
+            <td><a href="<%= recipe["source_url"]%>"><%= image_tag(recipe["image_url"], size: "100")%></a></td>
+            <td><a href="<%= recipe["source_url"]%>"><%= raw(recipe["title"])%></a></td>
+            <td><%= recipe["social_rank"]%></td>
+        </tr>
+        <% end %>
+    </table>
+<% else %>
+    <h4>No Record Found!</h4>
+<% end %>
